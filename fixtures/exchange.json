@@ -1,0 +1,353 @@
+{
+  "batches": [
+    {
+      "id": "B1",
+      "material": "薄膜导热",
+      "owner": "T-H"
+    },
+    {
+      "id": "B2",
+      "material": "聚合物散热",
+      "owner": "N-K"
+    },
+    {
+      "id": "B3",
+      "material": "封装界面",
+      "owner": "D-T"
+    },
+    {
+      "id": "B4",
+      "material": "聚合物散热",
+      "owner": "Q-R"
+    },
+    {
+      "id": "B5",
+      "material": "芯片屏蔽",
+      "owner": "Y-Z"
+    }
+  ],
+  "licenses": [
+    {
+      "id": "L1",
+      "data": "B1",
+      "uses": [
+        "internal",
+        "review"
+      ],
+      "zones": [
+        "CN",
+        "EU"
+      ],
+      "begins": "2027-01-18T08:00:00+08:00",
+      "expires": "2027-01-18T19:00:00+08:00"
+    },
+    {
+      "id": "L2",
+      "data": "B2",
+      "uses": [
+        "internal",
+        "review"
+      ],
+      "zones": [
+        "CN",
+        "EU"
+      ],
+      "begins": "2027-01-18T08:00:00+08:00",
+      "expires": "2027-01-18T19:00:00+08:00"
+    },
+    {
+      "id": "L3",
+      "data": "B3",
+      "uses": [
+        "internal"
+      ],
+      "zones": [
+        "CN",
+        "EU"
+      ],
+      "begins": "2027-01-18T08:00:00+08:00",
+      "expires": "2027-01-18T19:00:00+08:00"
+    },
+    {
+      "id": "L4",
+      "data": "B4",
+      "uses": [
+        "internal",
+        "review"
+      ],
+      "zones": [
+        "CN",
+        "EU"
+      ],
+      "begins": "2027-01-18T08:00:00+08:00",
+      "expires": "2027-01-18T19:00:00+08:00"
+    },
+    {
+      "id": "L5",
+      "data": "B5",
+      "uses": [
+        "internal",
+        "review"
+      ],
+      "zones": [
+        "EU"
+      ],
+      "begins": "2027-01-18T08:00:00+08:00",
+      "expires": "2027-01-18T19:00:00+08:00"
+    }
+  ],
+  "weights": [
+    {
+      "id": "W1",
+      "base_id": null,
+      "parents": [],
+      "data": [
+        "B1"
+      ],
+      "coverage": [
+        "薄膜"
+      ],
+      "file": "artifacts/W1.pack",
+      "sha256": "1e60817c3c47b9024c5a17bf5732d48bd28e2b990574730e67064fc173d6e92a"
+    },
+    {
+      "id": "W2",
+      "base_id": "W1",
+      "parents": [
+        "W1"
+      ],
+      "data": [
+        "B2"
+      ],
+      "coverage": [
+        "聚合物"
+      ],
+      "file": "artifacts/W2.pack",
+      "sha256": "b62e62bc0980b0d02f44a93643434441f5e7eb0d9f72768254f7fc990585e629"
+    },
+    {
+      "id": "W3",
+      "base_id": "W1",
+      "parents": [
+        "W1",
+        "W2"
+      ],
+      "data": [
+        "B3"
+      ],
+      "coverage": [
+        "封装"
+      ],
+      "file": "artifacts/W3.pack",
+      "sha256": "4e352a521e49183f74ed450d7922b65677f3aaa4857fa4a0fb54df1af81388a2"
+    },
+    {
+      "id": "W4",
+      "base_id": "W1",
+      "parents": [
+        "W1"
+      ],
+      "data": [
+        "B4"
+      ],
+      "coverage": [
+        "聚合物"
+      ],
+      "file": "artifacts/W4.pack",
+      "sha256": "563d7fa0fd37660091cb177204de806a637fdf0482a5074f98b274ee427ba821"
+    },
+    {
+      "id": "W5",
+      "base_id": "W1",
+      "parents": [
+        "W1"
+      ],
+      "data": [
+        "B5"
+      ],
+      "coverage": [
+        "屏蔽"
+      ],
+      "file": "artifacts/W5.pack",
+      "sha256": "2fae734b9f1c3f048e5f6a7a1e85d4b8b3e920cba2c8490c8419e8c13172a709"
+    },
+    {
+      "id": "W6",
+      "base_id": null,
+      "parents": [],
+      "data": [
+        "B2",
+        "B4"
+      ],
+      "coverage": [
+        "聚合物"
+      ],
+      "file": "artifacts/W6.pack",
+      "sha256": "d6bf56ad110a21e925b9f63143b7caf65d2b203fb372bddb8ceecc06a66559d8"
+    }
+  ],
+  "orders": [
+    {
+      "id": "O1",
+      "receiver": "EU-PROBE",
+      "zone": "EU",
+      "use": "review",
+      "families": [
+        "薄膜",
+        "聚合物"
+      ],
+      "existing_base": "W1",
+      "replace": true
+    },
+    {
+      "id": "O2",
+      "receiver": "CN-CERT",
+      "zone": "CN",
+      "use": "review",
+      "families": [
+        "薄膜",
+        "聚合物"
+      ],
+      "existing_base": "W1",
+      "replace": false
+    },
+    {
+      "id": "O3",
+      "receiver": "EU-OPS",
+      "zone": "EU",
+      "use": "review",
+      "families": [
+        "薄膜",
+        "聚合物",
+        "屏蔽"
+      ],
+      "existing_base": "W1",
+      "replace": true
+    }
+  ],
+  "audits": [
+    {
+      "id": "S1",
+      "reviewer": "R-1",
+      "order": "O1",
+      "candidates": [
+        "W1",
+        "W2"
+      ],
+      "happened": "2027-01-18T10:00:00+08:00"
+    },
+    {
+      "id": "S2",
+      "reviewer": "R-1",
+      "order": "O2",
+      "candidates": [
+        "W1",
+        "W2"
+      ],
+      "happened": "2027-01-18T10:20:00+08:00"
+    },
+    {
+      "id": "S3",
+      "reviewer": "R-2",
+      "order": "O3",
+      "candidates": [
+        "W1",
+        "W2",
+        "W5"
+      ],
+      "happened": "2027-01-18T10:45:00+08:00"
+    },
+    {
+      "id": "S4",
+      "reviewer": "R-2",
+      "order": "O1",
+      "candidates": [
+        "W1",
+        "W4"
+      ],
+      "happened": "2027-01-18T11:45:00+08:00"
+    }
+  ],
+  "changes": [
+    {
+      "id": "RL1",
+      "license": "L2",
+      "use": "review",
+      "zone": "EU",
+      "happened": "2027-01-18T11:00:00+08:00"
+    },
+    {
+      "id": "RL2",
+      "license": "L5",
+      "use": "review",
+      "zone": "EU",
+      "happened": "2027-01-18T13:00:00+08:00"
+    }
+  ],
+  "receipts": [
+    {
+      "id": "D1",
+      "order": "O1",
+      "claim": "CLAIM-1",
+      "files": [
+        "W1",
+        "W2"
+      ],
+      "digests": [
+        "1e60817c3c47b9024c5a17bf5732d48bd28e2b990574730e67064fc173d6e92a",
+        "b62e62bc0980b0d02f44a93643434441f5e7eb0d9f72768254f7fc990585e629"
+      ],
+      "state": "staged",
+      "happened": "2027-01-18T10:25:00+08:00",
+      "arrived": "2027-01-18T10:25:00+08:00"
+    },
+    {
+      "id": "D2",
+      "order": "O1",
+      "claim": "CLAIM-1",
+      "files": [
+        "W1",
+        "W2"
+      ],
+      "digests": [
+        "1e60817c3c47b9024c5a17bf5732d48bd28e2b990574730e67064fc173d6e92a",
+        "b62e62bc0980b0d02f44a93643434441f5e7eb0d9f72768254f7fc990585e629"
+      ],
+      "state": "obtained",
+      "happened": "2027-01-18T10:55:00+08:00",
+      "arrived": "2027-01-18T11:20:00+08:00"
+    },
+    {
+      "id": "D3",
+      "order": "O2",
+      "claim": "CLAIM-2",
+      "files": [
+        "W1",
+        "W2"
+      ],
+      "digests": [
+        "1e60817c3c47b9024c5a17bf5732d48bd28e2b990574730e67064fc173d6e92a",
+        "b62e62bc0980b0d02f44a93643434441f5e7eb0d9f72768254f7fc990585e629"
+      ],
+      "state": "enabled",
+      "happened": "2027-01-18T10:52:00+08:00",
+      "arrived": "2027-01-18T11:05:00+08:00"
+    },
+    {
+      "id": "D4",
+      "order": "O1",
+      "claim": "CLAIM-1",
+      "files": [
+        "W1",
+        "W2"
+      ],
+      "digests": [
+        "1e60817c3c47b9024c5a17bf5732d48bd28e2b990574730e67064fc173d6e92a",
+        "b62e62bc0980b0d02f44a93643434441f5e7eb0d9f72768254f7fc990585e629"
+      ],
+      "state": "no_further_access",
+      "happened": "2027-01-18T11:40:00+08:00",
+      "arrived": "2027-01-18T11:45:00+08:00"
+    }
+  ]
+}

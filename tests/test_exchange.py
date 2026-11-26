@@ -6,7 +6,7 @@ import unittest
 
 from partner import parse_time as time
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
 
 
 class ExchangeTests(unittest.TestCase):
